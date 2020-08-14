@@ -834,7 +834,7 @@ def graveyard():
     print("It's an ancient burial ground.")
     while True:
         choice = input('> ')
-        if 'search stones' in choice.lower():
+        if 'search stone' in choice.lower():
             print("You see stones of all kind of shapes, sizes and colors.")
             print("Some of them are home to a purple fungus.")
             mushroom_seen = True
