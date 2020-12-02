@@ -45,7 +45,6 @@ def die():
         else:
             print("Yes or No?")
 
-# presents a welcome message and sets all global variables False (empties inventory); this variables turn True when the player finds the respective items during the game
 def start():
 # these are the items collected through the game
     global flash
@@ -100,7 +99,6 @@ You are resting after a day of fishing at the sea when suddenly a bright flash c
 It looks like something exploded near the old lighthouse.""")
     house()
 
-# this is the beginning of the game
 def house():
     print("You are in front of your small wooden house.")
     while True:
@@ -145,8 +143,6 @@ def beach_west():
     print("You see your old boat tied to the pier.")
     print("The sea seems tranquil.")
 
-
-
     while True:
         choice = input('> ')
 
@@ -160,9 +156,16 @@ def beach_west():
             house()
         elif 'go east' in choice.lower():
             beach()
-        elif 'untie boat' in choice.lower():
+        elif 'untie boat' in choice.lower() and release_boat == False:
             release_boat = True
             print("You release the boat!")
+        elif 'untie rope' in choice.lower() and release_boat == False:
+            release_boat = True
+            print("You release the boat!")
+        elif 'untie boat' in choice.lower() and release_boat == True:
+            print("The boat is already released!")
+        elif 'untie rope' in choice.lower() and release_boat == True:
+            print("The boat is already released!")
         elif 'use boat' in choice.lower() and release_boat == True:
             print("You are ready to go!")
             print("You cross the calm waters of the bay without problems.")
@@ -171,7 +174,7 @@ def beach_west():
             print("Try something else.")
 
 def beach_east():
-    print("This is the east side of the beach, where the sand stripe ends in a rocky elevation.")
+    print("This is the east side of the beach, where the sand strip ends in a rocky elevation.")
     while True:
         choice = input('> ')
         if 'go west' in choice.lower():
@@ -847,7 +850,7 @@ def graveyard():
         elif 'collect fungus' in choice.lower() and mushroom_seen == True:
             print("You pick some of the fungus.")
             mushroom = True
-        elif 'take fungus' in choice.lower() and musroom_seen == True:
+        elif 'take fungus' in choice.lower() and mushroom_seen == True:
             print("You pick some of the fungus.")
             mushroom = True
         elif 'search tomb' in choice.lower():
@@ -962,20 +965,21 @@ def light_house_south():
     print("This is the south side of the lighthouse – an old, tall building pointing to the black sky.")
     print("Oddly, its light is off.")
     print("From where you are, you can see no entrance.")
-    choice = input('> ')
+    while True:
+        choice = input('> ')
 
-    if 'go east' in choice.lower():
-        light_house_east()
-    elif 'go west' in choice.lower():
-        light_house_west()
-    elif 'go north' in choice.lower():
-        light_house_north()
-    elif 'go south' in choice.lower():
-        print("You don't want to meet the Shaman again...")
-    elif 'search lighthouse' in choice.lower():
-        print("It's the old lighthouse. Its light is off. Strange...")
-    else:
-        print("Try something else.")
+        if 'go east' in choice.lower():
+            light_house_east()
+        elif 'go west' in choice.lower():
+            light_house_west()
+        elif 'go north' in choice.lower():
+            light_house_north()
+        elif 'go south' in choice.lower():
+            print("You don't want to meet the Shaman again...")
+        elif 'search lighthouse' in choice.lower():
+            print("It's the old lighthouse. Its light is off. Strange...")
+        else:
+            print("Try something else.")
 
 def light_house_west():
     global key
@@ -1066,11 +1070,12 @@ def light_house_floor():
             print("An old phone lies on the floor.")
             while True:
                 choice = input('> ')
+
                 if 'search wardrobe' in choice.lower():
                     print("Just a pile of old men's clothes.")
                 elif 'open wardrobe' in choice.lower():
                     print("Just a pile of old men's clothes.")
-                elif 'search clothes' and gun == False:
+                elif 'search clothes' in choice.lower() and gun == False:
                     print("You find a shotgun!")
                     print("It's now in your inventory.")
                     print("Someone must have been hurt while trying to reach the gun...")
