@@ -5,7 +5,7 @@ from sys import exit
 # triggered after victory
 def win():
     print("Congratulations! You won!")
-    print("You probably avoided the extinction of human race.")
+    print("You probably avoided the extinction of the human race.")
     print("")
     print("This game was developed by Marcus Couto.")
     print("twitter.com/marcvs")
